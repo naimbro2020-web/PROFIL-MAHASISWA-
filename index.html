@@ -31,15 +31,14 @@
         .nav-links a { color: var(--putih); margin-left: 20px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--cyan); }
 
-        /* SECTION COMMON */
+        /* SECTION COMMON - Diubah ke min-height biar aman kalau konten panjang */
         section {
-            height: 100vh; scroll-snap-align: start; position: relative;
+            min-height: 100vh; scroll-snap-align: start; position: relative;
             display: flex; justify-content: center; align-items: center;
             background-size: cover; background-position: center;
-            padding: 80px 20px 20px 20px;
+            padding: 100px 20px 60px 20px; /* Ditambah padding biar gak nabrak navbar */
         }
 
-        /* REVISI: OVERLAY BIAR TERANG */
         .overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,20,40,0.8));
@@ -52,9 +51,9 @@
 
         .content-wrapper { position: relative; z-index: 2; width: 100%; max-width: 1000px; display: flex; flex-direction: column; align-items: center; }
 
-        /* HERO - RESPONSIF */
+        /* HERO */
         .profile-img { 
-            width: clamp(150px, 20vw, 180px); /* Ukuran fleksibel sesuai layar */
+            width: clamp(150px, 20vw, 180px);
             height: clamp(150px, 20vw, 180px); 
             border-radius: 50%; 
             border: 5px solid var(--cyan); margin-bottom: 25px; 
@@ -64,39 +63,37 @@
         .profile-img:hover { transform: scale(1.05); box-shadow: 0 0 50px rgba(0, 212, 255, 0.8); }
 
         .hero-text h1 { 
-            font-size: clamp(1.8rem, 5vw, 2.8rem); /* Font mengecil di HP */
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
             text-align: center; text-shadow: 2px 2px 10px rgba(0,0,0,0.9); 
         }
         .tagline { color: var(--cyan); font-weight: bold; margin-top: 10px; letter-spacing: 2px; text-shadow: 1px 1px 5px rgba(0,0,0,0.9); }
 
-        /* CARD STYLE - RESPONSIF */
+        /* CARD STYLE - Biar isinya gak "anbrak" */
         .card-box { 
             background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 20px; 
             backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); 
-            width: 100%; max-width: 450px; 
+            width: 100%; max-width: 500px; /* Lebar dikit biar lega */
         }
         h2 { color: var(--cyan); margin-bottom: 20px; text-align: center; font-size: 1.8rem; }
-        .info-row { margin-bottom: 10px; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px; }
+        .info-row { margin-bottom: 12px; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px; }
+        .info-row span { color: rgba(255,255,255,0.7); }
 
-        /* ORTU & UPLOAD FOTO - RESPONSIF */
+        /* ORTU & UPLOAD FOTO */
         .ortu-flex { display: flex; gap: 30px; align-items: center; flex-wrap: wrap; justify-content: center; width: 100%; }
-        .photo-upload-container { text-align: center; width: 100%; max-width: 350px; }
+        .photo-upload-container { text-align: center; }
         .family-photo {
-            width: 100%; height: auto; min-height: 200px; border-radius: 15px; 
+            width: 100%; max-width: 350px; height: 250px; border-radius: 15px; 
             border: 2px dashed var(--cyan); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             object-fit: cover; cursor: pointer; transition: 0.3s; background: rgba(0, 212, 255, 0.05);
         }
-        .family-photo:hover { filter: brightness(1.2); border-style: solid; }
-        .upload-label { display: block; margin-top: 10px; font-size: 0.75rem; color: var(--cyan); font-style: italic; }
 
         /* LIST ITEMS */
         .list-container { width: 100%; max-width: 600px; }
         .item-card { display: flex; align-items: center; gap: 15px; background: var(--transparan); padding: 15px; border-radius: 12px; margin-bottom: 12px; transition: 0.3s; }
-        .item-card:hover { transform: translateX(10px); background: rgba(0, 212, 255, 0.1); }
         .item-card img { width: 60px; height: 60px; border-radius: 10px; object-fit: cover; }
 
         /* FOOTER */
-        footer { position: absolute; bottom: 20px; width: 100%; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.4); z-index: 10; }
+        footer { padding: 30px 0; width: 100%; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.4); z-index: 10; }
 
         /* BACKGROUND IMAGES */
         #s1 { background-image: url('https://images.unsplash.com/photo-1541339907198-e08756ebafe3?auto=format&fit=crop&q=80'); }
@@ -105,13 +102,10 @@
         #s4 { background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80'); }
         #s5 { background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80'); }
 
-        /* KHUSUS PENYESUAIAN HP */
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            section { height: auto; min-height: 100vh; scroll-snap-align: none; padding: 100px 20px 40px; }
-            .hero-text h1 { font-size: 2rem; }
-            .ortu-flex { flex-direction: column-reverse; } /* Foto di bawah data ortu di HP */
-            .card-box { width: 100%; padding: 20px; }
+            section { scroll-snap-align: none; } /* Biar di HP gak kaku pas scroll */
+            .ortu-flex { flex-direction: column-reverse; }
         }
     </style>
 </head>
@@ -142,10 +136,17 @@
         <div class="content-wrapper">
             <div class="card-box">
                 <h2>BIODATA</h2>
-                <div class="info-row"><span>Nama</span> <strong>Andi Fi'ijanatin Naim</strong></div>
-                <div class="info-row"><span>TTL</span> <strong>Simpang, 21 Jan 2008</strong></div>
+                <div class="info-row"><span>Nama Lengkap</span> <strong>Andi Fi'ijanatin Naim</strong></div>
+                <div class="info-row"><span>NPM</span> <strong>2517041010</strong></div>
+                <div class="info-row"><span>Prodi / Jurusan</span> <strong>Fisika</strong></div>
+                <div class="info-row"><span>Fakultas</span> <strong>FMIPA UNILA</strong></div>
+                <div class="info-row"><span>Indeks Prestasi Kamulatif</span> <strong>3.60</strong></div>
+                <div class="info-row"><span>Tempat Lahir</span> <strong>Simpang</strong></div>
+                <div class="info-row"><span>Tanggal Lahir</span> <strong>21 Januari 2008</strong></div>
                 <div class="info-row"><span>Alamat</span> <strong>Bandar Lampung</strong></div>
                 <div class="info-row"><span>Hobi</span> <strong>Lari dan Musik</strong></div>
+                <div class="info-row"><span>Cita-cita</span> <strong>Polisi</strong></div>
+                <div class="info-row"><span>Motto</span> <em>"Bergerak, Tergerak, Menggerakkan"</em></div>
             </div>
         </div>
     </section>
@@ -205,19 +206,19 @@
             <div class="list-container">
                 <div class="item-card">
                     <img src="https://uploads.onecompiler.io/442rs4afc/44j3kuqda/himafi.jpg" alt="HIMAFI">
-                    <div><h3>HIMAFI UNILA</h3><p>Divisi Kaderisasi</p></div>
+                    <div><h3>HIMAFI UNILA</h3><p>Ketua Bidang Kaderisasi</p></div>
                 </div>
                 <div class="item-card">
-                    <img src="https://uploads.onecompiler.io/442rs4afc/44j3kuqda/bem%20mipa.jpg" alt="Creative">
+                    <img src="https://uploads.onecompiler.io/442rs4afc/44j3kuqda/unila.jpg" alt="Creative">
                     <div><h3>Tim Creative</h3><p>Talent</p></div>
                 </div>
                 <div class="item-card">
-                    <img src="https://uploads.onecompiler.io/442rs4afc/44j3kuqda/unila.jpg" alt="BEM">
-                    <div><h3>BEM FMIPA</h3><p>Staff Generasi Muda</p></div>
+                    <img src="https://uploads.onecompiler.io/442rs4afc/44j3kuqda/bem%20mipa.jpg" alt="BEM">
+                    <div><h3>BEM FMIPA</h3><p>Generasi Muda</p></div>
                 </div>
             </div>
+            <footer>© 2026 - Andi Fi'ijanatin Naim • HIMAFI UNILA</footer>
         </div>
-        <footer>© 2026 - Andi Fi'ijanatin Naim • HIMAFI UNILA</footer>
     </section>
 
     <script>
